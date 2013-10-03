@@ -1,0 +1,19 @@
+#!/bin/bash
+
+SCRIPT=$1
+shift
+
+if [ -z $SCRIPT ]; then
+  echo "Available commands:"
+  echo "-------------------"
+  ls -1 bin
+  echo ""
+  exit 0
+fi
+
+if ! [ -x bin/$SCRIPT ]; then
+  echo "subcommand not found for $0"
+  exit 1
+fi
+
+bin/$SCRIPT $@
