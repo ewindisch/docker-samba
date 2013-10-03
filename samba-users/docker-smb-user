@@ -1,0 +1,34 @@
+#!/bin/bash
+
+function update_ent {
+  tail -n1 /etc/passwd >> /var/lib/extrausers/passwd
+  tail -n1 /etc/shadow >> /var/lib/extrausers/shadow
+  tail -n1 /etc/group >> /var/lib/extrausers/group
+}
+
+case $1 in
+ add)
+   useradd -M $2 
+   echo "$2:$3" | chpasswd
+   echo -e "$3\n$3" | (smbpasswd -a -s $2)
+   update_ent
+ ;;
+ delete)
+   cp /etc/passwd /etc/shadow /etc/group /tmp/
+
+   for file in passwd shadow group; do
+     cat /var/lib/extrausers/$file >> /etc/$file
+   done
+
+   userdel $2 
+
+   for file in passwd shadow group; do
+     diff /tmp/$file /etc/$file | sed -n '/^-[^-]/{ s/^-//; p; }' >> /var/lib/extrausers/$file
+   done
+ ;;
+ password)
+   echo "$2:$3" | chpasswd
+   echo -e "$3\n$3" | (smbpasswd -a -s $2)
+   update_ent
+ ;;
+esac

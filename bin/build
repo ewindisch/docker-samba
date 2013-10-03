@@ -1,0 +1,5 @@
+#!/bin/bash
+
+docker build -t ewindisch/samba-smbd samba-smbd
+docker build -t ewindisch/samba-nmbd samba-nmbd
+docker build -t ewindisch/samba-users samba-users

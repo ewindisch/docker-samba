@@ -1,0 +1,14 @@
+#!/bin/bash
+. etc/defaults/docker
+
+docker run -d \
+  -v $PWD/etc/smb:/etc/smb \
+  -v $PWD/etc:/var/lib/extrausers \
+  -v ${GUEST_DIR}:/guest \
+  -v ${SHARE_DIR}:/shared \
+  -v /home:/home \
+  ewindisch/samba-smbd
+
+docker run -d \
+  -v $PWD/etc/smb:/etc/smb \
+  ewindisch/samba-nmbd
