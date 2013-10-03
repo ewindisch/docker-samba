@@ -24,9 +24,9 @@ the network.
 
 Edit etc/defaults/docker to set your share paths:
 
-> SHARE_DIR=/path/to/files/all/users/can/see
-> GUEST_DIR=/path/to/files/all/guests/can/see
-> HOME_DIR=/home
+    SHARE_DIR=/path/to/files/all/users/can/see
+    GUEST_DIR=/path/to/files/all/guests/can/see
+    HOME_DIR=/home
 
 These will all be bind-mounted to the samba-smbd container,
 there is presently no way to disable any of these mounts. To disable
@@ -53,7 +53,7 @@ etc/ directory and relaunch your containers.
 
 For convenience, a user management tool is available as:
 
-> $ ./samba-docker usermod [add|delete|password] <user> <password>
+    $ ./samba-docker usermod [add|delete|password] <user> <password>
 
 The password option is mandatory for 'add' and 'password'. If
 supplied, the password is ignored for the 'delete' feature.
@@ -61,8 +61,8 @@ supplied, the password is ignored for the 'delete' feature.
 Running
 =======
 
-> $ ./samba-docker build
-> $ ./samba-docker launch
+    $ ./samba-docker build
+    $ ./samba-docker launch
 
 The build process should only need to be performed once, unless
 code changes have been made or an upgrade is being performed.
