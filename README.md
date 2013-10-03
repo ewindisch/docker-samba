@@ -49,9 +49,23 @@ Users
 
 User management is performed through tdb and standard
 Unix password/shadow files. Edit these files within the
-etc/ directory and rebuild your containers.
+etc/ directory and relaunch your containers.
+
+For convenience, a user management tool is available as:
+
+> $ ./samba-docker usermod [add|delete|password] <user> <password>
+
+The password option is mandatory for 'add' and 'password'. If
+supplied, the password is ignored for the 'delete' feature.
 
 Running
 =======
 
-> $ sudo ./launch.sh
+> $ ./samba-docker build
+> $ ./samba-docker launch
+
+The build process should only need to be performed once, unless
+code changes have been made or an upgrade is being performed.
+
+These commands *MUST* be run as root, or with a user granted
+priviledges to build and launch docker containers.
