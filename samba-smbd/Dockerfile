@@ -6,4 +6,4 @@ expose 445:445
 expose 139:139
 
 entrypoint ["/usr/sbin/smbd"]
-cmd ["-F"]
+cmd ["-F", "-S"]
