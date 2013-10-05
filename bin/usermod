@@ -2,4 +2,5 @@
 docker run \
   -v $PWD/etc/smb:/etc/smb \
   -v $PWD/etc:/var/lib/extrausers \
+  -v $PWD/var/lib/samba:/var/lib/samba \
   ewindisch/samba-users $@

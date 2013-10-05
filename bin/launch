@@ -1,9 +1,16 @@
 #!/bin/bash
 . etc/defaults/docker
 
+if ! [ -d var/lib/samba ]; then 
+  mkdir -p var/lib
+  docker run -a stdout ewindisch/samba-base tar c /var/lib/samba | 
+    tar xvC var/lib/ 
+fi
+
 docker run -d \
   -v $PWD/etc/smb:/etc/smb \
   -v $PWD/etc:/var/lib/extrausers \
+  -v $PWD/var/lib/samba:/var/lib/samba \
   -v ${GUEST_DIR}:/guest \
   -v ${SHARE_DIR}:/shared \
   -v /home:/home \
