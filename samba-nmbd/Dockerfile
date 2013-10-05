@@ -1,4 +1,4 @@
-from ewindisch/samba
+from ewindisch/samba-base
 
 maintainer Eric Windisch <eric@windisch.us>
 

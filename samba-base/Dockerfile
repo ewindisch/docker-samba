@@ -14,5 +14,9 @@ run sed -i '/^\(passwd\|group\|shadow\):/{ s/$/ extrausers/; }' /etc/nsswitch.co
 # Install samba!
 run apt-get install -y samba
 
+# Make directories for shared paths
+run mkdir -p /mnt/shared
+run mkdir -p /mnt/guest
+
 # Add user management tool
 add docker-smb-user /usr/local/bin/

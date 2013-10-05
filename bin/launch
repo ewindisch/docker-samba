@@ -11,8 +11,8 @@ docker run -d \
   -v $PWD/etc/smb:/etc/smb \
   -v $PWD/etc:/var/lib/extrausers \
   -v $PWD/var/lib/samba:/var/lib/samba \
-  -v ${GUEST_DIR}:/guest \
-  -v ${SHARE_DIR}:/shared \
+  -v ${GUEST_DIR}:/mnt/guest \
+  -v ${SHARE_DIR}:/mnt/shared \
   -v ${HOME_DIR}:/home \
   ewindisch/samba-smbd $@
 
