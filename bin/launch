@@ -8,7 +8,7 @@ if ! [ -d var/lib/samba ]; then
 fi
 
 docker run -d \
-  -v $PWD/etc/smb:/etc/smb \
+  -v $PWD/etc/samba:/etc/samba \
   -v $PWD/etc:/var/lib/extrausers \
   -v $PWD/var/lib/samba:/var/lib/samba \
   -v ${GUEST_DIR}:/mnt/guest \
