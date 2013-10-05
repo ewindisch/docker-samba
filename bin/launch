@@ -13,7 +13,7 @@ docker run -d \
   -v $PWD/var/lib/samba:/var/lib/samba \
   -v ${GUEST_DIR}:/guest \
   -v ${SHARE_DIR}:/shared \
-  -v /home:/home \
+  -v ${HOME_DIR}:/home \
   ewindisch/samba-smbd $@
 
 docker run -d \
