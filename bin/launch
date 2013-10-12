@@ -17,5 +17,5 @@ docker run -d \
   ewindisch/samba-smbd $@
 
 docker run -d \
-  -v $PWD/etc/smb:/etc/smb \
+  -v $PWD/etc/samba:/etc/samba \
   ewindisch/samba-nmbd $@
