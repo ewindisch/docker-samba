@@ -1,9 +1,10 @@
 #!/bin/bash
 . etc/defaults/docker
+. $PWD/docker-samba.conf
 
 if ! [ -d var/lib/samba ]; then 
   mkdir -p var/lib
-  docker run -a stdout ewindisch/samba-base tar c /var/lib/samba | 
+  docker run -a stdout ${CONTAINER_PREFIX}/samba-base tar c /var/lib/samba | 
     tar xvC var/lib/ 
 fi
 
@@ -14,8 +15,8 @@ docker run -d \
   -v ${GUEST_DIR}:/mnt/guest \
   -v ${SHARE_DIR}:/mnt/shared \
   -v ${HOME_DIR}:/home \
-  ewindisch/samba-smbd $@
+  ${CONTAINER_PREFIX}/samba-smbd $@
 
 docker run -d \
   -v $PWD/etc/samba:/etc/samba \
-  ewindisch/samba-nmbd $@
+  ${CONTAINER_PREFIX}/samba-nmbd $@
