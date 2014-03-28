@@ -1,0 +1,5 @@
+# Ignore Aptana project files
+.project
+
+# Ignore vim swap files
+*.swp
