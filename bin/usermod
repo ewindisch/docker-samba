@@ -1,6 +1,8 @@
 #!/bin/bash
+. $PWD/docker-samba.conf
+
 docker run \
   -v $PWD/etc/samba:/etc/samba \
   -v $PWD/etc:/var/lib/extrausers \
   -v $PWD/var/lib/samba:/var/lib/samba \
-  ewindisch/samba-users $@
+  ${CONTAINER_PREFIX}/samba-users $@
