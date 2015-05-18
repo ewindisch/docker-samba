@@ -8,9 +8,9 @@ function update_ent {
 
 case $1 in
  add)
-   useradd -M $2 
+   useradd -M "$2"
    echo "$2:$3" | chpasswd
-   echo -e "$3\n$3" | (smbpasswd -a -s $2)
+   echo -e "$3\n$3" | (smbpasswd -a -s "$2")
    update_ent
  ;;
  delete)
@@ -28,7 +28,7 @@ case $1 in
  ;;
  password)
    echo "$2:$3" | chpasswd
-   echo -e "$3\n$3" | (smbpasswd -a -s $2)
+   echo -e "$3\n$3" | (smbpasswd -a -s "$2")
    update_ent
  ;;
 esac
